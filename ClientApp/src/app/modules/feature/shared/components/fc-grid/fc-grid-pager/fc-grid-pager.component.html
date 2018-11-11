@@ -1,0 +1,17 @@
+<ul *ngIf="totalPages() > 1" class="pagination pagination-sm">
+  <li [class.disabled]="page == 1" class="page-item">
+    <a (click)="pageClicked(prevPage())" class="page-link">«</a>
+  </li>
+  <li *ngFor="let p of pagesRange()" [class.active]="p == page" class="page-item">
+    <a (click)="pageClicked(p)" class="page-link" [attr.href]="p == page ? null : '#'">
+      {{p}}
+    </a>
+  </li>
+  <li [class.disabled]="totalPages() <= page" class="page-item">
+    <a (click)="pageClicked(nextPage())" class="page-link">»</a>
+  </li>
+</ul>
+
+<select [ngModel]="pageSize" (change)="pageSizeChanged(pageSize.value)" #pageSize>
+  <option *ngFor="let size of pageSizes" [value]="size">{{size}}</option>
+</select>

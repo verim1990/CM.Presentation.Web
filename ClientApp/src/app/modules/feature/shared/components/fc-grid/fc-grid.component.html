@@ -1,0 +1,55 @@
+<div class="grid-header">
+  <ng-content select="[header]"></ng-content>
+</div>
+
+<div class="grid-filters">
+  <ng-content select="[filters]"></ng-content>
+</div>
+
+<div class="grid-body">
+  <div class="grid-items">
+    <div *ngFor="let item of items$ | async" class="grid-item-wrapper">
+      <div class="grid-item">
+        <ng-container *ngTemplateOutlet="itemTemplate ? itemTemplate : defualtItem; context:{ item: item }"></ng-container>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="hasNoItems$ | async" class="grid-has-no-items-wrapper">
+    <div class="grid-has-no-items">
+      <div #noItemsRef><ng-content select="[noItems]"></ng-content></div>
+      <span *ngIf="noItemsRef.childNodes.length == 0">
+        <ng-container *ngTemplateOutlet="defaultNoItems"></ng-container>
+      </span>
+    </div>
+  </div>
+  <div class="grid-loader">
+    <div #loaderRef><ng-content select="[loader]"></ng-content></div>
+    <span *ngIf="loaderRef.childNodes.length == 0">
+      <ng-container *ngTemplateOutlet="defaultLoader"></ng-container>
+    </span>
+  </div>
+</div>
+
+<div class="grid-footer">
+  <ng-content select="[footer]"></ng-content>
+</div>
+
+<div class="grid-pager">
+  <fc-grid-pager [rangeSize]="3"
+                 [page]="request.page"
+                 [pageSize]="request.pageSize"
+                 [total]="total$ | async">
+  </fc-grid-pager>
+</div>
+
+<ng-template #defaultNoItems>
+  <div *ngIf="!loading">No items found...</div>
+</ng-template>
+
+<ng-template #defaultLoader>
+  <fc-loader *ngIf="loading"></fc-loader>
+</ng-template>
+
+<ng-template #defualtItem let-item="item">
+  {{ item | json }}
+</ng-template>

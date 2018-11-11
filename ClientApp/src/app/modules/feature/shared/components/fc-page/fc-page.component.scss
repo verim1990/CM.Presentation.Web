@@ -1,0 +1,28 @@
+:host {
+  height: calc(100% - 10px);
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+}
+
+.header-wrapper {
+  display: flex;
+  flex-direction: row;
+
+  .header-title {
+    flex: 1;
+    align-self: center;
+  }
+
+  .header-left-actions,
+  .header-right-actions {
+    display: flex;
+    flex: 0 1 auto;
+    align-items: center;
+    line-height: 1;
+  }
+}
+
+.body-wrapper {
+  flex: 1;
+}

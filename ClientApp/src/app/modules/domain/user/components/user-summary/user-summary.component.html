@@ -1,0 +1,11 @@
+<div>
+  <a routerLink="/user/{{ user.id }}" routerLinkActive="active">{{ user.username }}</a>
+</div>
+<div>
+  <span *ngIf="user.addedDate">Created: {{ user.addedDate | date }}</span>
+  <span *ngIf="user.modifiedDate">| Updated: {{ user.modifiedDate | date }}</span>
+</div>
+<div>
+  Email:
+  <span>{{ user.email }}</span>
+</div>

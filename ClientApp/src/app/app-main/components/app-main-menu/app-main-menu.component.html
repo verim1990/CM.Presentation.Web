@@ -1,0 +1,16 @@
+<div class="menu-items-wrapper">
+  <span>
+    <a routerLink="user/list" routerLinkActive="active" *ngIf="isLoggedIn">Users</a>
+  </span>
+</div>
+<div class="menu-actions-wrapper">
+  <div class="menu-action-icons">
+    <img src="assets/images/airplane.svg" alt="App" routerLink="" *ngIf="isLoggedIn">
+    <a routerLink="/auth/login" routerLinkActive="active" *ngIf="!isLoggedIn">
+      <img src="assets/images/login.svg" alt="Login">
+    </a>
+    <a routerLink="/auth/logout" routerLinkActive="active" *ngIf="isLoggedIn">
+      <img src="assets/images/logout.svg" alt="Logout">
+    </a>
+  </div>
+</div>

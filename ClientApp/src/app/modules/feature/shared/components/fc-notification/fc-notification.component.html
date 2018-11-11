@@ -1,0 +1,10 @@
+<div class="notification-title">
+  {{notification.body.title}}
+</div>
+<div class="content">
+  {{notification.body.content | slice:0:notification.body.contentMaxLength}}
+</div>
+<div *ngIf="notification.body.icon" class="icon"></div>
+<div class="progress-loader" *ngIf="notification.options.showProgressBar">
+  <span [ngStyle]="{'width': progressWidth + '%'}"></span>
+</div>

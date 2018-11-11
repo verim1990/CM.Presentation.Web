@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+}
+
+.menu-items-wrapper {
+  flex: 1 1 auto;
+}
+
+.menu-actions-wrapper {
+  flex: 0 1 auto;
+
+  .menu-action-icons {
+    img {
+      width: 20px;
+      height: 20px;
+      margin: 3px;
+      cursor: pointer;
+      vertical-align: middle;
+    }
+  }
+}

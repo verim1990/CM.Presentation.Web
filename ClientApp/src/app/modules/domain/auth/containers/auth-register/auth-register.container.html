@@ -1,0 +1,49 @@
+<fc-page>
+  <div title>
+    <h4>Register</h4>
+  </div>
+  <div leftSideActions>
+    <a routerLink="/auth/login" routerLinkActive="active">
+      <img src="/images/back.svg" alt="Back">
+    </a>
+  </div>
+
+  <form [formGroup]="registerForm" (ngSubmit)="register(registerForm.value, registerForm.valid)" novalidate>
+    <div class="row">
+      <fc-row [label]="'Username'">
+        <input type="text" class="form-control" formControlName="username" [fc-row-focus]="usernameFocusTrigger">
+        <small [hidden]="registerForm.controls.username.valid || (registerForm.controls.username.pristine && !submitted)" class="text-danger">
+          Username is required (minimum 5 characters).
+        </small>
+      </fc-row>
+      <fc-row [label]="'Email'">
+        <input type="text" class="form-control" formControlName="email">
+        <small [hidden]="registerForm.controls.email.valid || (registerForm.controls.email.pristine && !submitted)" class="text-danger">
+          Email is required (minimum 5 characters).
+        </small>
+      </fc-row>
+      <fc-row [label]="'Password'">
+        <input type="password" class="form-control" formControlName="password">
+        <small [hidden]="registerForm.controls.password.valid || (registerForm.controls.password.pristine && !submitted)" class="text-danger">
+          Password is required (minimum 5 characters).
+        </small>
+      </fc-row>
+      <fc-row [label]="'Confirm password'">
+        <input type="password" class="form-control" formControlName="confirmPassword">
+        <small [hidden]="registerForm.controls.confirmPassword.valid || (registerForm.controls.confirmPassword.pristine && !submitted)" class="text-danger">
+          <span *ngIf="registerForm.controls.confirmPassword.hasError('required') || registerForm.controls.confirmPassword.hasError('minlength')">Confirm password is required (minimum 5 characters).</span>
+        </small>
+        <small [hidden]="!registerForm.hasError('passwordMissMatch')" class="text-danger">
+          Passwords missmatch
+        </small>
+      </fc-row>
+    </div>
+    <div class="row">
+      <div class="col-sm text-right">
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" (click)="register(registerForm.value, registerForm.valid)">Register</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</fc-page>

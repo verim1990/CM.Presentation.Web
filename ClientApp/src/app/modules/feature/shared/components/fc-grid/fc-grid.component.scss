@@ -1,0 +1,54 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.grid-header {
+}
+
+.grid-filters {
+  margin-bottom: 5px;
+}
+
+.grid-filters /deep/ [filters] {
+  display: flex;
+}
+
+.grid-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .grid-items {
+    flex: 1;
+    overflow-y: auto;
+    height: 0px;
+
+    .grid-item-wrapper {
+      .grid-item {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .grid-has-no-items-wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .grid-has-no-items {
+      max-width: 50%;
+    }
+  }
+}
+
+.grid-loader {
+}
+
+.grid-footer {
+}
+
+.grid-pager {
+}

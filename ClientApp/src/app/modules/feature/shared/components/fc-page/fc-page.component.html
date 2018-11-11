@@ -1,0 +1,15 @@
+<div class="header-wrapper">
+  <div class="header-left-actions">
+    <ng-content select="[leftSideActions]"></ng-content>
+  </div>
+  <div class="header-title">
+    <span>{{title}}</span>
+  </div>
+  <div class="header-right-actions">
+    <ng-content select="[rightSideActions]"></ng-content>
+  </div>
+</div>
+
+<div class="body-wrapper">
+  <ng-content></ng-content>
+</div>

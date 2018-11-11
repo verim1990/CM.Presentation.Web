@@ -1,0 +1,34 @@
+<fc-page [title]="'User'">
+  <div class="action-buttons" leftSideActions>
+    <a routerLink="/user/list" routerLinkActive="active">
+      <img src="/images/back.svg" alt="Back">
+    </a>
+  </div>
+
+  <div class="action-buttons btn-group" rightSideActions>
+    <button type="button" class="btn btn-primary btn-sm" (click)="save()">Save</button>
+    <button type="button" class="btn btn-secondary btn-sm" (click)="delete()" *ngIf="user && user.id">Delete</button>
+  </div>
+
+  <div class="user-wrapper">
+    <fc-loader *ngIf="loading" [text]="Loading"></fc-loader>
+
+    <form [formGroup]="userForm" novalidate>
+      <fc-row [label]="'Name'">
+        <input type="text" class="form-control" formControlName="username" />
+        <div [hidden]="userForm.controls.username.valid || (userForm.controls.username.pristine && !submitted)" class="text-danger">
+          <div *ngIf="userForm.controls.username.hasError('required')">Name is required.</div>
+          <div *ngIf="userForm.controls.username.hasError('minlength')">Name must have minimum 5 characters.</div>
+        </div>
+      </fc-row>
+      <fc-row [label]="'Email'">
+        <input type="text" class="form-control" formControlName="email" />
+        <div [hidden]="userForm.controls.email.valid || (userForm.controls.email.pristine && !submitted)" class="text-danger">
+          <div *ngIf="userForm.controls.email.hasError('required')">Email is required.</div>
+          <div *ngIf="userForm.controls.email.hasError('minlength')">Email must have minimum 5 characters.</div>
+        </div>
+      </fc-row>
+    </form>
+  </div>
+</fc-page>
+

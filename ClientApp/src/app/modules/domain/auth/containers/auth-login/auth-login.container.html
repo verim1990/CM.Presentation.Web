@@ -1,0 +1,45 @@
+<fc-page>
+  <div title>
+    <h4>Login</h4>
+  </div>
+  <div class="social-login-buttons" rightSideActions>
+    <a href='auth/facebook' class="btn btn-social btn-facebook">
+      <i class="fa fa-facebook"></i>
+    </a>
+    <a href='auth/google' class="btn btn-social btn-google">
+      <i class="fa fa-google-plus"></i>
+    </a>
+    <a href='auth/twitter' class="btn btn-social btn-twitter">
+      <i class="fa fa-twitter"></i>
+    </a>
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value, loginForm.valid)" novalidate>
+    <div class="row">
+      <fc-row [label]="'Username'">
+        <input class="form-control" type="text" formControlName="username" [fc-row-focus]="usernameFocusTrigger">
+        <small [hidden]="loginForm.controls.username.valid || (loginForm.controls.username.pristine && !submitted)" class="text-danger">
+          Username is required.
+        </small>
+      </fc-row>
+      <fc-row [label]="'Password'">
+        <input class="form-control" type="password" formControlName="password">
+        <small [hidden]="loginForm.controls.password.valid || (loginForm.controls.password.pristine && !submitted)" class="text-danger">
+          Password is required.
+        </small>
+      </fc-row>
+    </div>
+    <div class="row">
+      <div class="col-sm text-right">
+        <div class=" btn-group">
+          <button type="button" class="btn btn-secondary" routerLink="/auth/register" routerLinkActive="active" href="#">
+            Register
+          </button>
+          <button type="button" class="btn btn-primary" (click)="login(loginForm.value, loginForm.valid)">
+            Login
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</fc-page>

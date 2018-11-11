@@ -1,0 +1,18 @@
+<fc-page [title]="'User list'">
+  <div class="action-buttons" rightSideActions>
+    <a routerLink="/user/new" routerLinkActive="active">
+      <img src="/images/plus.svg" alt="New user">
+    </a>
+  </div>
+
+  <fc-grid [itemTemplate]="itemTemplate" [getData]="getUsers">
+    <div filters>
+      <fc-grid-text-filter [name]="'Username'" [title]="'Username'"></fc-grid-text-filter>
+      <fc-grid-text-filter [name]="'Email'" [title]="'Email'"></fc-grid-text-filter>
+    </div>
+  </fc-grid>
+</fc-page>
+
+<ng-template #itemTemplate let-user="item">
+  <app-user-summary [user]="user"></app-user-summary>
+</ng-template>
