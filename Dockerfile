@@ -27,7 +27,6 @@ RUN curl -SL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-lin
     && npm i -g @angular/cli@latest
 
 COPY CM.Presentation/CM.Presentation.Web/CM.Presentation.Web.csproj CM.Presentation/CM.Presentation.Web/
-COPY CM.Shared/CM.Shared.Web/CM.Shared.Web.csproj CM.Shared/CM.Shared.Web/
 RUN dotnet restore CM.Presentation/CM.Presentation.Web/CM.Presentation.Web.csproj
 
 COPY . .
