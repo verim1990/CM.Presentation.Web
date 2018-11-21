@@ -37,7 +37,7 @@ RUN cd ClientApp && npm i && npm rebuild node-sass
 FROM build AS publish
 RUN dotnet publish CM.Presentation.Web.csproj -c Release -o /app
 
-FROM base
+FROM base AS final
 WORKDIR /app
-COPY --from=publish /app .
+COPY --from=2 /app .
 ENTRYPOINT ["dotnet", "CM.Presentation.Web.dll"]
