@@ -2,9 +2,9 @@
 
 install-package Microsoft.AspNetCore.SpaServices.Extensions
 
-1.2) References
+dotnet add package CM.Shared.Web -s https://nexus.wojciechdudek.pl/repository/nuget-hosted
 
-CM.Shared.Web
+1.2) References
 
 2) Recreate microservice
 
