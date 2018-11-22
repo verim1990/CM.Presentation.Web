@@ -32,7 +32,7 @@ RUN dotnet restore CM.Presentation.Web.csproj --configfile NuGet.Config
 COPY . .
 
 RUN dotnet build CM.Presentation.Web.csproj -c Release -o /app
-RUN cd ClientApp && npm i && npm rebuild node-sass
+# RUN cd ClientApp && npm i && npm rebuild node-sass
 
 FROM build AS publish
 RUN dotnet publish CM.Presentation.Web.csproj -c Release -o /app
