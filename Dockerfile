@@ -40,4 +40,5 @@ RUN dotnet publish CM.Presentation.Web.csproj -c Release -o /app
 FROM base
 WORKDIR /app
 COPY --from=2 /app .
-ENTRYPOINT ["dotnet", "CM.Presentation.Web.dll"]
+CMD ["dotnet", "CM.Presentation.Web.dll"]
+	
